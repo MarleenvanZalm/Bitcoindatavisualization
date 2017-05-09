@@ -3,7 +3,7 @@ background(1)
 
 import json
 
-with open ('day_Vol_EUR_-1_11491761830191.json') as infile:
+with open ('vol.eur.ethereum.json') as infile:
     freqData = json.load(infile)
 print len(freqData)
 print freqData[0]
