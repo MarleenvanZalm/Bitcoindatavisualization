@@ -1,0 +1,20 @@
+size(512, 512)
+background(1)
+
+import json
+
+with open ('day_Vol_EUR_-1_11491761830191.json') as infile:
+    freqData = json.load(infile)
+print len(freqData)
+print freqData[0]
+
+y = 0
+for word in freqData[:20]:
+    y = y + 23
+    barwidth = word["open"] * 10
+    fill(0.8, 0, 0)
+    rect(100, y, barwidth, 20)
+    fill(0, 0, 0.8)
+    text(word["close"], 10, y + 20)
+
+    
