@@ -1,0 +1,42 @@
+size(2000, 900)
+background(1)
+
+import json
+
+with open ('vol.eur.ethereum.json') as infile:
+    stockData = json.load(infile)
+print len(stockData)
+print stockData[0]
+
+# close
+# volumefrom 
+# volumeto
+
+volfrom = [d['volumefrom'] for d in stockData]
+print min(volfrom)
+print max(volfrom)
+
+volto = [d['volumeto'] for d in stockData]
+print min(volto)
+print max(volto)
+
+stroke (0.2)
+x = 0
+#speed graph, and draw in pixels
+for index, day in enumerate(stockData[:-1]):
+    x = x + 3
+    nextday = stockData[index + 1 ]
+    volume_from_start = day["volumefrom"] / 1000.0
+    volume_from_end = nextday["volumefrom"] /1000.0
+    line(x, volume_from_start, x + 3, volume_from_end)
+    
+#y = 0
+#for day in stockData[:20]:
+#    y = y + 23
+#    barwidth = day["open"] * 10
+#    fill(0.8, 0, 0)
+#    rect(100, y, barwidth, 20)
+#    fill(0, 0, 0.8)
+#    text(day["close"], 10, y + 20)
+
+    
